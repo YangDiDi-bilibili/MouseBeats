@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 
+	public float timeScale;
+	public static bool doGameGoing;
+
 	private void Awake()
 	{
 		if (instance != null)
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
 
 		instance = this;
 		DontDestroyOnLoad(gameObject);
+
+		doGameGoing = true;
 	}
 
 	public void SwitchScene(int sceneIndex)
@@ -26,10 +31,30 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-		Time.timeScale = 1.0f;
+		SetGameSpeed(timeScale);
+	}
+
+	public void SetGameSpeed(float speed)
+    {
+		Time.timeScale = speed;
+		AudioManager.instance.SetPlaySpeed(speed);
     }
 
-    private void ResetAllValue()
+	public void PauseGame()
+    {
+        if (doGameGoing)
+        {
+			SetGameSpeed(0);
+			doGameGoing = false;
+        }
+        else
+        {
+			SetGameSpeed(timeScale);
+			doGameGoing = true;
+        }
+	}
+
+	private void ResetAllValue()
 	{
 	}
 }
