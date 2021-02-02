@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NotesGenerate : MonoBehaviour
 {
-    public List<GameObject> notesGenerate = new List<GameObject>();
+    public List<Transform> notesGenerate = new List<Transform>();
 
     private void Start()
     {
