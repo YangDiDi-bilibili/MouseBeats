@@ -58,5 +58,13 @@ public class GameObjectPool : MonoBehaviour
         return tmp;
     }
 
+    public void ReturnLeftTap(GameObject tmp)
+    {
+        tmp.SetActive(true);
+        tmp.transform.SetParent(null);
+        tmp.transform.position = Vector3.zero;
+        tmp.SetActive(false);
+        tapLeftPool.Enqueue(tmp);
+    }
 
 }
