@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class NotesGenerate : MonoBehaviour
 {
-    public List<Transform> notesGenerate = new List<Transform>();
+    private GameObject note;
 
-    private void Start()
+    private void OnEnable()
     {
-        
+        note = GameObjectPool.instance.GetLeftTap();
+        note.transform.position = gameObject.transform.position;
+        note.transform.parent = gameObject.transform;
     }
 }

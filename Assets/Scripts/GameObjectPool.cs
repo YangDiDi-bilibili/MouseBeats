@@ -27,21 +27,36 @@ public class GameObjectPool : MonoBehaviour
 
     private void Start()
     {
+        GameObject tmp;
         for (int i = 0; i < notesInstanceCount; i++)
         {
-            tapLeftPool.Enqueue(GameObject.Instantiate(tapLeft, Vector3.zero, Quaternion.identity));
-            tapRightPool.Enqueue(GameObject.Instantiate(tapRight, Vector3.zero, Quaternion.identity));
+            tmp = GameObject.Instantiate(tapLeft, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            tapLeftPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(tapRight, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            tapRightPool.Enqueue(tmp);
         }
 
         for (int i = 0; i < effectsInstanceCount; i++)
         {
-            perfectPool.Enqueue(GameObject.Instantiate(perfect, Vector3.zero, Quaternion.identity));
-            goodPool.Enqueue(GameObject.Instantiate(good, Vector3.zero, Quaternion.identity));
+            tmp = GameObject.Instantiate(perfect, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            perfectPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(good, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            goodPool.Enqueue(tmp);
         }
     }
 
     public GameObject GetLeftTap()
     {
-        return tapLeftPool.Dequeue();
+        GameObject tmp = tapLeftPool.Dequeue();
+        tmp.SetActive(true);
+        return tmp;
     }
+
+
 }
