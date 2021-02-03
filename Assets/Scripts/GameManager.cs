@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 
+	public Vector3Int menuState;
+
 	public float timeScale;
 	public static bool doGameGoing;
 

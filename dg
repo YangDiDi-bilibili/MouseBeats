@@ -1,0 +1,35 @@
+[33mcommit 3f0c26270b71491f78fbf15e8d6e28d67ae5388e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: 飏弟弟 <YangBro@qq.com>
+Date:   Tue Feb 2 10:57:59 2021 +0800
+
+    对象池功能初步实现，修复了一些bug
+
+[33mcommit 53f5a4385ced3553bcc076e7724b2efba0562067[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: 飏弟弟 <YangBro@qq.com>
+Date:   Tue Feb 2 10:27:28 2021 +0800
+
+    删除了LICENSE
+
+[33mcommit de23fcb25cd647c967cd7524cff08f321d335ff4[m
+Author: 飏弟弟 <yangbro@qq.com>
+Date:   Mon Feb 1 22:58:23 2021 +0800
+
+    添加了LICENSE文档
+
+[33mcommit 32bf489e689fd756278dea6e932a7d2297a9ee1d[m
+Author: 飏弟弟 <YangBro@qq.com>
+Date:   Mon Feb 1 22:56:47 2021 +0800
+
+    添加README文档
+
+[33mcommit 057973dcdf3e30d6be0017ce1c1f0947aa8390d3[m
+Author: YangBro <YangBro@qq.com>
+Date:   Mon Feb 1 21:53:37 2021 +0800
+
+    初步实现动画，判定线检测，游戏暂停等功能；
+
+[33mcommit 95d86db5548ba4421102f39cb5afee9bbb05af69[m
+Author: YangBro <YangBro@qq.com>
+Date:   Mon Feb 1 20:59:51 2021 +0800
+
+    创建仓库

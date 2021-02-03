@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonManager : MonoBehaviour
+public class GameMenuButton : MonoBehaviour
 {
     public void PauseOnClick()
     {
