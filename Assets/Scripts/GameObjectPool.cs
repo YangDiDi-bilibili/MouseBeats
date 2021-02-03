@@ -5,11 +5,37 @@ using UnityEngine;
 public class GameObjectPool : MonoBehaviour
 {
     [Header("音符")]
-    private Queue<GameObject> tapLeftPool = new Queue<GameObject>();
-    private Queue<GameObject> tapRightPool = new Queue<GameObject>();
-    public GameObject tapLeft;
-    public GameObject tapRight;
-    public int notesInstanceCount;
+    private Queue<GameObject> leftTapPool = new Queue<GameObject>();
+    private Queue<GameObject> rightTapPool = new Queue<GameObject>();
+    public GameObject leftTap;
+    public GameObject rightTap;
+    public int tapInstanceCount;
+    public static int leftTapCount = 0;
+    public static int rightTapCount = 0;
+
+    private Queue<GameObject> leftHoldPool = new Queue<GameObject>();
+    private Queue<GameObject> rightHoldPool = new Queue<GameObject>();
+    public GameObject leftHold;
+    public GameObject rightHold;
+    public int holdInstanceCount;
+    public static int leftHoldCount = 0;
+    public static int rightHoldCount = 0;
+
+    private Queue<GameObject> leftFlickPool = new Queue<GameObject>();
+    private Queue<GameObject> rightFlickPool = new Queue<GameObject>();
+    public GameObject leftFlick;
+    public GameObject rightFlick;
+    public int flickInstanceCount;
+    public static int leftFlickCount = 0;
+    public static int rightFlickCount = 0;
+
+    private Queue<GameObject> leftDragPool = new Queue<GameObject>();
+    private Queue<GameObject> rightDragPool = new Queue<GameObject>();
+    public GameObject leftDrag;
+    public GameObject rightDrag;
+    public int dragInstanceCount;
+    public static int leftDragCount = 0;
+    public static int rightDragCount = 0;
 
     [Header("特效")]
     private Queue<GameObject> perfectPool = new Queue<GameObject>();
@@ -28,15 +54,58 @@ public class GameObjectPool : MonoBehaviour
     private void Start()
     {
         GameObject tmp;
-        for (int i = 0; i < notesInstanceCount; i++)
-        {
-            tmp = GameObject.Instantiate(tapLeft, Vector3.zero, Quaternion.identity);
-            tmp.SetActive(false);
-            tapLeftPool.Enqueue(tmp);
 
-            tmp = GameObject.Instantiate(tapRight, Vector3.zero, Quaternion.identity);
+        leftTapCount = 0;
+        rightTapCount = 0;
+        leftHoldCount = 0;
+        rightHoldCount = 0;
+        leftFlickCount = 0;
+        rightFlickCount = 0;
+        leftDragCount = 0;
+        rightDragCount = 0;
+
+        for (int i = 0; i < tapInstanceCount; i++)
+        {
+            tmp = GameObject.Instantiate(leftTap, Vector3.zero, Quaternion.identity);
             tmp.SetActive(false);
-            tapRightPool.Enqueue(tmp);
+            leftTapPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(rightTap, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            rightTapPool.Enqueue(tmp);
+        }
+
+        for (int i = 0; i < holdInstanceCount; i++)
+        {
+            tmp = GameObject.Instantiate(leftHold, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            leftHoldPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(rightHold, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            rightHoldPool.Enqueue(tmp);
+        }
+
+        for (int i = 0; i < flickInstanceCount; i++)
+        {
+            tmp = GameObject.Instantiate(leftFlick, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            leftFlickPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(rightFlick, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            rightFlickPool.Enqueue(tmp);
+        }
+
+        for (int i = 0; i < dragInstanceCount; i++)
+        {
+            tmp = GameObject.Instantiate(leftDrag, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            leftDragPool.Enqueue(tmp);
+
+            tmp = GameObject.Instantiate(leftDrag, Vector3.zero, Quaternion.identity);
+            tmp.SetActive(false);
+            leftDragPool.Enqueue(tmp);
         }
 
         for (int i = 0; i < effectsInstanceCount; i++)
@@ -51,20 +120,96 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetLeftTap()
+    public GameObject GetNote(NotesGenerate.NoteType note)
     {
-        GameObject tmp = tapLeftPool.Dequeue();
+        GameObject tmp;
+
+        switch (note)
+        {
+            case NotesGenerate.NoteType.leftTap:
+                leftTapCount++;
+                tmp = leftTapPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.rightTap:
+                rightTapCount++;
+                tmp = rightTapPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.leftHold:
+                leftHoldCount++;
+                tmp = leftHoldPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.rightHold:
+                rightHoldCount++;
+                tmp = rightHoldPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.leftFlick:
+                leftFlickCount++;
+                tmp = leftFlickPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.rightFlick:
+                rightFlickCount++;
+                tmp = rightFlickPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.leftDrag:
+                leftDragCount++;
+                tmp = leftDragPool.Dequeue();
+                break;
+            case NotesGenerate.NoteType.rightDrag:
+                rightDragCount++;
+                tmp = rightDragPool.Dequeue();
+                break;
+            default:
+                leftTapCount++;
+                tmp = leftTapPool.Dequeue();
+                Debug.LogError(this + "输入有误");
+                break;
+        }
+
         tmp.SetActive(true);
         return tmp;
     }
 
-    public void ReturnLeftTap(GameObject tmp)
+    public void ReturnNotes(GameObject tmp,NotesGenerate.NoteType type)
     {
-        tmp.SetActive(true);
-        tmp.transform.SetParent(null);
-        tmp.transform.position = Vector3.zero;
-        tmp.SetActive(false);
-        tapLeftPool.Enqueue(tmp);
+        switch (type)
+        {
+            case NotesGenerate.NoteType.leftTap:
+                leftTapCount--;
+                leftTapPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.rightTap:
+                rightTapCount--;
+                rightTapPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.leftHold:
+                leftHoldCount--;
+                leftHoldPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.rightHold:
+                rightHoldCount--;
+                rightHoldPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.leftFlick:
+                leftFlickCount--;
+                leftFlickPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.rightFlick:
+                rightFlickCount--;
+                rightFlickPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.leftDrag:
+                leftDragCount--;
+                leftDragPool.Enqueue(tmp);
+                break;
+            case NotesGenerate.NoteType.rightDrag:
+                rightDragCount--;
+                rightDragPool.Enqueue(tmp);
+                break;
+            default:
+                leftTapCount--;
+                leftTapPool.Enqueue(tmp);
+                Debug.LogError(this + "输入有误");
+                break;
+        }
     }
-
 }

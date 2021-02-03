@@ -20,57 +20,33 @@ public class NotesGenerate : MonoBehaviour
 
     public NoteType noteType;
 
+    public static Queue<GameObject> notes = new Queue<GameObject>();
+
     private void OnEnable()
     {
-        switch (noteType)
-        {
-            case NoteType.leftTap:
-                note = GameObjectPool.instance.GetLeftTap();
-                note.transform.position = gameObject.transform.position;
-                note.transform.parent = gameObject.transform;
-                break;
-            case NoteType.rightTap:
-                break;
-            case NoteType.leftHold:
-                break;
-            case NoteType.rightHold:
-                break;
-            case NoteType.leftFlick:
-                break;
-            case NoteType.rightFlick:
-                break;
-            case NoteType.leftDrag:
-                break;
-            case NoteType.rightDrag:
-                break;
-            default:
-                break;
-        }
+        note = GameObjectPool.instance.GetNote(noteType);
+        note.transform.position = gameObject.transform.position;
+        note.transform.parent = gameObject.transform;
+
+        notes.Enqueue(note);
     }
 
     public void ReturnGameObject()
     {
-        switch (noteType)
+        note.SetActive(true);
+        note.transform.SetParent(null);
+        note.transform.position = Vector3.zero;
+        note.SetActive(false);
+
+        if (notes.Peek() == note)
         {
-            case NoteType.leftTap:
-                GameObjectPool.instance.ReturnLeftTap(note);
-                break;
-            case NoteType.rightTap:
-                break;
-            case NoteType.leftHold:
-                break;
-            case NoteType.rightHold:
-                break;
-            case NoteType.leftFlick:
-                break;
-            case NoteType.rightFlick:
-                break;
-            case NoteType.leftDrag:
-                break;
-            case NoteType.rightDrag:
-                break;
-            default:
-                break;
+            notes.Dequeue();
         }
+        else
+        {
+            Debug.LogError(this + "音符消除顺序出错");
+        }
+
+        GameObjectPool.instance.ReturnNotes(note, noteType);
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PerfectDetect : MonoBehaviour
 {
-    public List<GameObject> perfectNotes = new List<GameObject>();
+    public static Queue<GameObject> perfectNotes = new Queue<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Note"))
         {
-            perfectNotes.Add(collision.gameObject);
+            perfectNotes.Enqueue(collision.gameObject);
         }
     }
 
@@ -18,7 +18,19 @@ public class PerfectDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            perfectNotes.Remove(collision.gameObject);
+            if (perfectNotes.Peek() == collision.gameObject)
+            {
+                perfectNotes.Dequeue();
+            }
+            else
+            {
+                Debug.LogError(collision.gameObject + "不是perfect队列的首位");
+            }
         }
+    }
+
+    public static GameObject GetPerfectPeek()
+    {
+        return perfectNotes.Peek();
     }
 }
