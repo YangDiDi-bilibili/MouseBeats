@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2218085913021176952}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7425135b859349b31ace20378faf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuState: {x: 0, y: 0, z: 0}
   timeScale: 1
 --- !u!82 &256527992244516109
 AudioSource:

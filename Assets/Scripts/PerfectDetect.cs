@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class PerfectDetect : MonoBehaviour
 {
-    public static Queue<GameObject> perfectNotes = new Queue<GameObject>();
+    public static Queue<GameObject> perfectNotesLeft = new Queue<GameObject>();
+    public static Queue<GameObject> perfectNotesRight = new Queue<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Note"))
         {
-            perfectNotes.Enqueue(collision.gameObject);
+            if (DetectLine.GetNoteDirection(collision.gameObject))
+            {
+                perfectNotesLeft.Enqueue(collision.gameObject);
+            }
+            else
+            {
+                perfectNotesRight.Enqueue(collision.gameObject);
+            }
         }
     }
 
@@ -18,19 +26,29 @@ public class PerfectDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (perfectNotes.Peek() == collision.gameObject)
+            if (DetectLine.GetNoteDirection(collision.gameObject))
             {
-                perfectNotes.Dequeue();
+                if (perfectNotesLeft.Peek() == collision.gameObject)
+                {
+                    perfectNotesLeft.Dequeue();
+                }
+                else
+                {
+                    Debug.LogError(collision.gameObject + "不是perfectLeft队列的首位");
+                }
             }
             else
             {
-                Debug.LogError(collision.gameObject + "不是perfect队列的首位");
+                if (perfectNotesRight.Peek() == collision.gameObject)
+                {
+                    perfectNotesRight.Dequeue();
+                }
+                else
+                {
+                    Debug.LogError(collision.gameObject + "不是perfectRight队列的首位");
+                }
+
             }
         }
-    }
-
-    public static GameObject GetPerfectPeek()
-    {
-        return perfectNotes.Peek();
     }
 }

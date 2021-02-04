@@ -19,6 +19,11 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    public static void Bad()
+    {
+
+    }
+
     public static void Miss()
     {
 
