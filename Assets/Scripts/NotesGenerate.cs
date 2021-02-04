@@ -31,7 +31,7 @@ public class NotesGenerate : MonoBehaviour
     {
         note.SetActive(true);
         note.transform.SetParent(null);
-        note.transform.position = Vector3.up * 100;
+        note.transform.position = Vector3.zero;
         note.SetActive(false);
 
         GameObjectPool.instance.ReturnNotes(note, noteType);

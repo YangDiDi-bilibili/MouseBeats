@@ -7,6 +7,12 @@ public class GoodDetect : MonoBehaviour
     public static Queue<GameObject> goodNotesLeft = new Queue<GameObject>();
     public static Queue<GameObject> goodNotesRight = new Queue<GameObject>();
 
+    private void Start()
+    {
+        goodNotesLeft.Clear();
+        goodNotesRight.Clear();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Note"))
@@ -24,28 +30,31 @@ public class GoodDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.gameObject.activeSelf)
         {
-            if (DetectLine.GetNoteDirection(collision.gameObject))
+            if (collision.CompareTag("Note"))
             {
-                if (goodNotesLeft.Peek() == collision.gameObject)
+                if (DetectLine.GetNoteDirection(collision.gameObject))
                 {
-                    goodNotesLeft.Dequeue();
+                    if (goodNotesLeft.Peek() == collision.gameObject)
+                    {
+                        goodNotesLeft.Dequeue();
+                    }
+                    else
+                    {
+                        Debug.LogError(collision.gameObject + "不是goodLeft队列的首位");
+                    }
                 }
                 else
                 {
-                    Debug.LogError(collision.gameObject + "不是goodLeft队列的首位");
-                }
-            }
-            else
-            {
-                if (goodNotesRight.Peek() == collision.gameObject)
-                {
-                    goodNotesRight.Dequeue();
-                }
-                else
-                {
-                    Debug.LogError(collision.gameObject + "不是goodRight队列的首位");
+                    if (goodNotesRight.Peek() == collision.gameObject)
+                    {
+                        goodNotesRight.Dequeue();
+                    }
+                    else
+                    {
+                        Debug.LogError(collision.gameObject + "不是goodRight队列的首位");
+                    }
                 }
             }
         }

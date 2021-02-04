@@ -11,21 +11,21 @@ public class ScoreManager : MonoBehaviour
 
     public static void Perfect()
     {
-
+        Debug.Log("Perfect!");
     }
 
     public static void Good()
     {
-
+        Debug.Log("Good!");
     }
 
     public static void Bad()
     {
-
+        Debug.Log("Bad!");
     }
 
     public static void Miss()
     {
-
+        Debug.Log("Miss!");
     }
 }

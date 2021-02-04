@@ -7,6 +7,12 @@ public class PerfectDetect : MonoBehaviour
     public static Queue<GameObject> perfectNotesLeft = new Queue<GameObject>();
     public static Queue<GameObject> perfectNotesRight = new Queue<GameObject>();
 
+    private void Start()
+    {
+        perfectNotesLeft.Clear();
+        perfectNotesRight.Clear();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Note"))
@@ -24,30 +30,33 @@ public class PerfectDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.gameObject.activeSelf)
         {
-            if (DetectLine.GetNoteDirection(collision.gameObject))
+            if (collision.CompareTag("Note"))
             {
-                if (perfectNotesLeft.Peek() == collision.gameObject)
+                if (DetectLine.GetNoteDirection(collision.gameObject))
                 {
-                    perfectNotesLeft.Dequeue();
+                    if (perfectNotesLeft.Peek() == collision.gameObject)
+                    {
+                        perfectNotesLeft.Dequeue();
+                    }
+                    else
+                    {
+                        Debug.LogError(collision.gameObject + "不是perfectLeft队列的首位");
+                    }
                 }
                 else
                 {
-                    Debug.LogError(collision.gameObject + "不是perfectLeft队列的首位");
-                }
-            }
-            else
-            {
-                if (perfectNotesRight.Peek() == collision.gameObject)
-                {
-                    perfectNotesRight.Dequeue();
-                }
-                else
-                {
-                    Debug.LogError(collision.gameObject + "不是perfectRight队列的首位");
-                }
+                    if (perfectNotesRight.Peek() == collision.gameObject)
+                    {
+                        perfectNotesRight.Dequeue();
+                    }
+                    else
+                    {
+                        Debug.LogError(collision.gameObject + "不是perfectRight队列的首位");
+                    }
 
+                }
             }
         }
     }

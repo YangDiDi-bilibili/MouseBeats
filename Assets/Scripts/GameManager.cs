@@ -14,18 +14,27 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if (instance != null)
+		if (instance == null)
 		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+        {
 			Destroy(gameObject);
 		}
-
-		instance = this;
-		DontDestroyOnLoad(gameObject);
-
 		doGameGoing = true;
 	}
 
-	public void SwitchScene(int sceneIndex)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void SwitchScene(int sceneIndex)
 	{
 		ResetAllValue();
 		SceneManager.LoadScene(sceneIndex);
