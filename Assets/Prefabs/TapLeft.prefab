@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8018946004925588289}
   - component: {fileID: 7333078845674032947}
-  - component: {fileID: 4403480995372943595}
-  - component: {fileID: 4594424993921368428}
   - component: {fileID: 6511827368088727730}
   - component: {fileID: 8197947035440070492}
   m_Layer: 0
-  m_Name: NoteBlue
+  m_Name: TapLeft
   m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1915627243660363479, guid: fe8c1beddab47d94bba76e7c47d9d007,
-    type: 3}
+  m_Sprite: {fileID: 587399386868092580, guid: fe8c1beddab47d94bba76e7c47d9d007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,37 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4403480995372943595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14828702431273337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626d4a1459c198b43989ac110d486367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &4594424993921368428
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14828702431273337}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf3ac0767aba5ee4da977da67af4a966, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &6511827368088727730
 Rigidbody2D:
   serializedVersion: 4

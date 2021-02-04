@@ -1,88 +1,31 @@
 fileFormatVersion: 2
-guid: fe8c1beddab47d94bba76e7c47d9d007
+guid: 47f066310da371242a7c6476efecdd1d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6194528345598826035
-    second: NoteBlue_0
+      213: -3598916374439202735
+    second: Notes_0
   - first:
-      213: 7746802839482321387
-    second: NoteBlue_1
+      213: -733219096263470103
+    second: Notes_1
   - first:
-      213: 8210246563860676600
-    second: NoteBlue_2
+      213: 8722924714100469040
+    second: Notes_2
   - first:
-      213: -6356220563243463783
-    second: NoteBlue_3
+      213: 6257677035871968672
+    second: Notes_3
   - first:
-      213: 1698573511397393839
-    second: NoteBlue_4
+      213: 8039372748551541876
+    second: Notes_4
   - first:
-      213: -9109043750124648562
-    second: NoteBlue_5
+      213: -2870236734101642953
+    second: Notes_5
   - first:
-      213: 3519810450634630313
-    second: NoteBlue_6
+      213: -8422380503605110267
+    second: Notes_6
   - first:
-      213: 4271700477553715397
-    second: NoteBlue_7
-  - first:
-      213: 6122041833666671525
-    second: NoteBlue_8
-  - first:
-      213: 6982065104538061448
-    second: NoteBlue_9
-  - first:
-      213: 7356569408352411822
-    second: NoteBlue_10
-  - first:
-      213: -9182963245189837488
-    second: NoteBlue_0
-  - first:
-      213: -6752315086946012217
-    second: NoteBlue_1
-  - first:
-      213: 6879402312124685557
-    second: NoteBlue_2
-  - first:
-      213: -4529897511965409041
-    second: NoteBlue_3
-  - first:
-      213: 3899518035267220148
-    second: NoteBlue_4
-  - first:
-      213: -8238864894497381057
-    second: NoteBlue_5
-  - first:
-      213: -7221150259383899771
-    second: NoteBlue_6
-  - first:
-      213: 7300105315006175109
-    second: NoteBlue_7
-  - first:
-      213: -4632393131015169466
-    second: NoteBlue_8
-  - first:
-      213: -8400390117364234230
-    second: NoteBlue_9
-  - first:
-      213: -84953701999586836
-    second: NoteBlue_10
-  - first:
-      213: -3891538734594081986
-    second: NoteBlue_11
-  - first:
-      213: -1915627243660363479
-    second: TapLeft_0
-  - first:
-      213: 8420429332740398930
-    second: TapLeft_1
-  - first:
-      213: -377230053892880048
-    second: TapLeft_2
-  - first:
-      213: -7439692551872510276
-    second: TapLeft_3
+      213: -4033378587868176147
+    second: Notes_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -192,7 +135,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TapLeft_0
+      name: Notes_0
       rect:
         serializedVersion: 2
         x: 0
@@ -206,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 929309bdb235a65e0800000000000000
-      internalID: -1915627243660363479
+      spriteID: 150f63510a41e0ec0800000000000000
+      internalID: -3598916374439202735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TapLeft_1
+      name: Notes_1
       rect:
         serializedVersion: 2
         x: 32
@@ -227,14 +170,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25f55426ddf5bd470800000000000000
-      internalID: 8420429332740398930
+      spriteID: 9e3dea0ed1513d5f0800000000000000
+      internalID: -733219096263470103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TapLeft_2
+      name: Notes_2
       rect:
         serializedVersion: 2
         x: 64
@@ -248,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0590d1fb34fc3caf0800000000000000
-      internalID: -377230053892880048
+      spriteID: 03d2f6abfcd0e0970800000000000000
+      internalID: 8722924714100469040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TapLeft_3
+      name: Notes_3
       rect:
         serializedVersion: 2
         x: 96
@@ -269,8 +212,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb6058f8a07e0c890800000000000000
-      internalID: -7439692551872510276
+      spriteID: 0ad944a0c1cb7d650800000000000000
+      internalID: 6257677035871968672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Notes_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 474de5e9be6919f60800000000000000
+      internalID: 8039372748551541876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Notes_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7312892c5eeda28d0800000000000000
+      internalID: -2870236734101642953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Notes_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a117f3e81bd1b80800000000000000
+      internalID: -8422380503605110267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Notes_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de063794b8f8608c0800000000000000
+      internalID: -4033378587868176147
       vertices: []
       indices: 
       edges: []
