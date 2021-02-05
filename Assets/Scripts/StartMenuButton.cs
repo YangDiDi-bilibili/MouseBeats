@@ -11,11 +11,11 @@ public class StartMenuButton : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.instance.menuState == Vector3Int.zero)
+        if (GameManager.menuState == Vector3Int.zero)
         {
-            GameManager.instance.menuState = new Vector3Int(1, 0, 0);
+            GameManager.menuState = new Vector3Int(1, 0, 0);
         }
-        SetMenu(GameManager.instance.menuState);
+        SetMenu(GameManager.menuState);
     }
 
     public void SetMenu(Vector3Int tmp)
@@ -50,34 +50,50 @@ public class StartMenuButton : MonoBehaviour
             }
         }
 
-        GameManager.instance.menuState = tmp;
+        GameManager.menuState = tmp;
     }
 
     public void StartOnClick()
     {
-        if(GameManager.instance.menuState == new Vector3Int(1, 0, 0))
+        if(GameManager.menuState == new Vector3Int(1, 0, 0))
         {
             SetMenu(new Vector3Int(0, 1, 0));
         }
         else
         {
-            Debug.LogError(GameManager.instance.menuState + "出现了意料之外的数据");
+            Debug.LogError(GameManager.menuState + "出现了意料之外的数据");
         }
     }
 
     public void SettingOnClick()
     {
-        if(GameManager.instance.menuState==new Vector3Int(1, 0, 0))
+        if(GameManager.menuState==new Vector3Int(1, 0, 0))
         {
             SetMenu(new Vector3Int(2, 0, 0));
         }
-        else if(GameManager.instance.menuState == new Vector3Int(2, 0, 0))
+        else
+        {
+            Debug.LogError(GameManager.menuState + "出现了意料之外的数据");
+        }
+    }
+
+    public void BackOnClick()
+    {
+        if (GameManager.menuState == new Vector3Int(2, 0, 0))
         {
             SetMenu(new Vector3Int(1, 0, 0));
         }
+        else if (GameManager.menuState == new Vector3Int(0, 1, 0))
+        {
+            SetMenu(new Vector3Int(1, 0, 0));
+        }
+        else if (GameManager.menuState.x == 0 && GameManager.menuState.y == 0 && GameManager.menuState.z != 0)
+        {
+            GameManager.menuState.z--;
+        }
         else
         {
-            Debug.LogError(GameManager.instance.menuState + "出现了意料之外的数据");
+            Debug.LogError(GameManager.menuState + "出现了意料之外的数据");
         }
     }
 

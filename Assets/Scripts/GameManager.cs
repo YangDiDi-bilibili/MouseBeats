@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 
-	public Vector3Int menuState;
+	public static Vector3Int menuState;
 
 	public float timeScale;
 	public static bool doGameGoing;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-		SetGameSpeed(timeScale);
+		//SetGameSpeed(timeScale);
 	}
 
 	public void SetGameSpeed(float speed)
