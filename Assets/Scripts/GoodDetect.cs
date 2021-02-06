@@ -33,13 +33,19 @@ public class GoodDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (goodNotesLeft.Peek() == collision.gameObject)
+            if (goodNotesLeft.Count != 0)
             {
-                goodNotesLeft.Dequeue();
+                if (goodNotesLeft.Peek() == collision.gameObject)
+                {
+                    goodNotesLeft.Dequeue();
+                }
             }
-            else if (goodNotesRight.Peek() == collision.gameObject)
+            else if (goodNotesRight.Count != 0)
             {
-                goodNotesRight.Dequeue();
+                if (goodNotesRight.Peek() == collision.gameObject)
+                {
+                    goodNotesRight.Dequeue();
+                }
             }
             else
             {

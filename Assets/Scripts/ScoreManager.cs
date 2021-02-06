@@ -9,8 +9,9 @@ public class ScoreManager : MonoBehaviour
     public static int goodCount;
     public static int missCount;
 
-    public static void Perfect()
+    public static void Perfect(Vector3 trans)
     {
+        GameObjectPool.instance.GetPerfectEffect(trans);
         Debug.Log("Perfect!");
     }
 

@@ -104,9 +104,9 @@ public class GameObjectPool : MonoBehaviour
             tmp.SetActive(false);
             leftDragPool.Enqueue(tmp);
 
-            tmp = GameObject.Instantiate(leftDrag, Vector3.zero, Quaternion.identity);
+            tmp = GameObject.Instantiate(rightDrag, Vector3.zero, Quaternion.identity);
             tmp.SetActive(false);
-            leftDragPool.Enqueue(tmp);
+            rightDragPool.Enqueue(tmp);
         }
 
         for (int i = 0; i < effectsInstanceCount; i++)
@@ -214,25 +214,12 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject PerfectEffect(Vector3 trans)
+    public GameObject GetPerfectEffect(Vector3 trans)
     {
         var tmp = perfectPool.Dequeue();
         tmp.SetActive(true);
         tmp.transform.position = trans;
+        perfectPool.Enqueue(tmp);
         return tmp;
-    }
-
-    public void ReturnPerfect(GameObject tmp)
-    {
-        if (tmp.name == "Perfect")
-        {
-            tmp.SetActive(false);
-            tmp.transform.position = Vector3.zero;
-            perfectPool.Enqueue(tmp);
-        }
-        else
-        {
-            Debug.LogError("Return a false GameObject!");
-        }
     }
 }

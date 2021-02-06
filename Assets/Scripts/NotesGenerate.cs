@@ -7,18 +7,6 @@ public class NotesGenerate : MonoBehaviour
 {
     private GameObject note;
 
-    //public enum NoteType
-    //{
-    //    leftTap,
-    //    rightTap,
-    //    leftHold,
-    //    rightHold,
-    //    leftFlick,
-    //    rightFlick,
-    //    leftDrag,
-    //    rightDrag
-    //}
-
     public NoteType noteType;
 
     private void OnEnable()

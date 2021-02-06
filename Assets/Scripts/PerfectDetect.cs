@@ -33,13 +33,20 @@ public class PerfectDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (perfectNotesLeft.Peek() == collision.gameObject)
+            if (perfectNotesLeft.Count != 0)
             {
-                perfectNotesLeft.Dequeue();
+                if (perfectNotesLeft.Peek() == collision.gameObject)
+                {
+                    perfectNotesLeft.Dequeue();
+                }
+
             }
-            else if (perfectNotesRight.Peek() == collision.gameObject)
+            else if (perfectNotesRight.Count != 0)
             {
-                perfectNotesRight.Dequeue();
+                if (perfectNotesRight.Peek() == collision.gameObject)
+                {
+                    perfectNotesRight.Dequeue();
+                }
             }
             else
             {
@@ -48,8 +55,7 @@ public class PerfectDetect : MonoBehaviour
 
             if (collision.gameObject.activeSelf)
             {
-                NoteType tmp = collision.gameObject.GetComponentInParent<NotesGenerate>().noteType;
-                if (tmp == NoteType.leftDrag || tmp == NoteType.rightDrag)
+                if (GetNoteType(collision.gameObject)==3)
                 {
                     ScoreManager.Miss();
                     collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();

@@ -49,32 +49,27 @@ public class DetectLine : MonoBehaviour
                         if (PerfectDetect.perfectNotesLeft.Count != 0)
                         {
                             if (PerfectDetect.perfectNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
-                            {
+                            {ScoreManager.Perfect(BadDetect.badNotesLeft.Peek().transform.position);
                                 ReturnNote(BadDetect.badNotesLeft.Peek());
-                                ScoreManager.Perfect();
                             }
                             else
-                            {
+                            {ScoreManager.Good();
                                 ReturnNote(BadDetect.badNotesLeft.Peek());
-                                ScoreManager.Good();
                             }
                         }
                         else
-                        {
+                        {ScoreManager.Good();
                             ReturnNote(BadDetect.badNotesLeft.Peek());
-                            ScoreManager.Good();
                         }
                     }
                     else
-                    {
+                    {ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesLeft.Peek());
-                        ScoreManager.Bad();
                     }
                 }
                 else
-                {
+                {ScoreManager.Bad();
                     ReturnNote(BadDetect.badNotesLeft.Peek());
-                    ScoreManager.Bad();
                 }
             }
         }
@@ -91,44 +86,58 @@ public class DetectLine : MonoBehaviour
                         if (PerfectDetect.perfectNotesRight.Count != 0)
                         {
                             if (PerfectDetect.perfectNotesRight.Peek() == BadDetect.badNotesRight.Peek())
-                            {
+                            {ScoreManager.Perfect(BadDetect.badNotesRight.Peek().transform.position);
                                 ReturnNote(BadDetect.badNotesRight.Peek());
-                                ScoreManager.Perfect();
                             }
                             else
-                            {
+                            {ScoreManager.Good();
                                 ReturnNote(BadDetect.badNotesRight.Peek());
-                                ScoreManager.Good();
                             }
                         }
                         else
-                        {
+                        {ScoreManager.Good();
                             ReturnNote(BadDetect.badNotesRight.Peek());
-                            ScoreManager.Good();
                         }
                     }
                     else
-                    {
+                    {ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesRight.Peek());
-                        ScoreManager.Bad();
                     }
                 }
                 else
                 {
-                    ReturnNote(BadDetect.badNotesRight.Peek());
                     ScoreManager.Bad();
+                    ReturnNote(BadDetect.badNotesRight.Peek());
+                }
+            }
+        }
+
+        if (doLeft)
+        {
+            if (PerfectDetect.perfectNotesLeft.Count != 0)
+            {
+                if(GetNoteType(PerfectDetect.perfectNotesLeft.Peek()) == 3)
+                {
+                    ScoreManager.Perfect(PerfectDetect.perfectNotesLeft.Peek().transform.position);
+                    ReturnNote(PerfectDetect.perfectNotesLeft.Peek());
+                }
+            }
+        }
+
+        if (doRight)
+        {
+            if (PerfectDetect.perfectNotesRight.Count != 0)
+            {
+                if (GetNoteType(PerfectDetect.perfectNotesRight.Peek()) == 3)
+                {
+                    ScoreManager.Perfect(PerfectDetect.perfectNotesRight.Peek().transform.position);
+                    ReturnNote(PerfectDetect.perfectNotesRight.Peek());
                 }
             }
         }
 
         doLeftDown = false;
 		doRightDown = false;
-    }
-
-	private NoteType GetNoteType(GameObject gObj)
-    {
-		var tmp = gObj.GetComponentInParent<NotesGenerate>().noteType;
-		return tmp;
     }
 
     private void ReturnNote(GameObject gObj)

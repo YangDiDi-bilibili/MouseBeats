@@ -34,13 +34,19 @@ public class BadDetect : MonoBehaviour
         //note离开bad collider，实现miss
         if (collision.CompareTag("Note"))
         {
-            if (badNotesLeft.Peek() == collision.gameObject)
+            if (badNotesLeft.Count != 0)
             {
-                badNotesLeft.Dequeue();
+                if (badNotesLeft.Peek() == collision.gameObject)
+                {
+                    badNotesLeft.Dequeue();
+                }
             }
-            else if (badNotesRight.Peek() == collision.gameObject)
+            else if (badNotesRight.Count != 0)
             {
-                badNotesRight.Dequeue();
+                if (badNotesRight.Peek() == collision.gameObject)
+                {
+                    badNotesRight.Dequeue();
+                }
             }
             else
             {
