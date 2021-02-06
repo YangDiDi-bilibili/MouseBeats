@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static NotesInfo;
 
 public class PerfectDetect : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PerfectDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (DetectLine.GetNoteDirection(collision.gameObject))
+            if (GetNoteDirection(collision.gameObject))
             {
                 perfectNotesLeft.Enqueue(collision.gameObject);
             }
@@ -30,34 +31,31 @@ public class PerfectDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.activeSelf)
+        if (collision.CompareTag("Note"))
         {
-            if (collision.CompareTag("Note"))
+            if (perfectNotesLeft.Peek() == collision.gameObject)
             {
-                if (DetectLine.GetNoteDirection(collision.gameObject))
-                {
-                    if (perfectNotesLeft.Peek() == collision.gameObject)
-                    {
-                        perfectNotesLeft.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是perfectLeft队列的首位");
-                    }
-                }
-                else
-                {
-                    if (perfectNotesRight.Peek() == collision.gameObject)
-                    {
-                        perfectNotesRight.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是perfectRight队列的首位");
-                    }
+                perfectNotesLeft.Dequeue();
+            }
+            else if (perfectNotesRight.Peek() == collision.gameObject)
+            {
+                perfectNotesRight.Dequeue();
+            }
+            else
+            {
+                Debug.LogError(collision.gameObject + "不是perfect队列的首位");
+            }
 
+            if (collision.gameObject.activeSelf)
+            {
+                NoteType tmp = collision.gameObject.GetComponentInParent<NotesGenerate>().noteType;
+                if (tmp == NoteType.leftDrag || tmp == NoteType.rightDrag)
+                {
+                    ScoreManager.Miss();
+                    collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();
                 }
             }
+
         }
     }
 }

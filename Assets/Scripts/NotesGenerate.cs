@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static NotesInfo;
 
 public class NotesGenerate : MonoBehaviour
 {
     private GameObject note;
 
-    public enum NoteType
-    {
-        leftTap,
-        rightTap,
-        leftHold,
-        rightHold,
-        leftFlick,
-        rightFlick,
-        leftDrag,
-        rightDrag
-    }
+    //public enum NoteType
+    //{
+    //    leftTap,
+    //    rightTap,
+    //    leftHold,
+    //    rightHold,
+    //    leftFlick,
+    //    rightFlick,
+    //    leftDrag,
+    //    rightDrag
+    //}
 
     public NoteType noteType;
 

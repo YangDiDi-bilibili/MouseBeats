@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static NotesInfo;
 
 public class GoodDetect : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class GoodDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (DetectLine.GetNoteDirection(collision.gameObject))
+            if (GetNoteDirection(collision.gameObject))
             {
                 goodNotesLeft.Enqueue(collision.gameObject);
             }
@@ -30,32 +31,19 @@ public class GoodDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.activeSelf)
+        if (collision.CompareTag("Note"))
         {
-            if (collision.CompareTag("Note"))
+            if (goodNotesLeft.Peek() == collision.gameObject)
             {
-                if (DetectLine.GetNoteDirection(collision.gameObject))
-                {
-                    if (goodNotesLeft.Peek() == collision.gameObject)
-                    {
-                        goodNotesLeft.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是goodLeft队列的首位");
-                    }
-                }
-                else
-                {
-                    if (goodNotesRight.Peek() == collision.gameObject)
-                    {
-                        goodNotesRight.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是goodRight队列的首位");
-                    }
-                }
+                goodNotesLeft.Dequeue();
+            }
+            else if (goodNotesRight.Peek() == collision.gameObject)
+            {
+                goodNotesRight.Dequeue();
+            }
+            else
+            {
+                Debug.LogError(collision.gameObject + "不是good队列的首位");
             }
         }
     }

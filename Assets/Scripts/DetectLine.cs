@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static NotesInfo;
 public class DetectLine : MonoBehaviour
 {
     public static bool doLeft;
@@ -125,7 +125,7 @@ public class DetectLine : MonoBehaviour
 		doRightDown = false;
     }
 
-	private NotesGenerate.NoteType GetNoteType(GameObject gObj)
+	private NoteType GetNoteType(GameObject gObj)
     {
 		var tmp = gObj.GetComponentInParent<NotesGenerate>().noteType;
 		return tmp;
@@ -134,43 +134,5 @@ public class DetectLine : MonoBehaviour
     private void ReturnNote(GameObject gObj)
     {
         gObj.GetComponentInParent<NotesGenerate>().ReturnGameObject();
-    }
-
-    public static bool GetNoteDirection(GameObject gObj)
-    {
-        var tmp = gObj.GetComponentInParent<NotesGenerate>().noteType;
-
-        bool a;
-        switch (tmp)
-        {
-            case NotesGenerate.NoteType.leftTap:
-                a = true;
-                break;
-            case NotesGenerate.NoteType.rightTap:
-                a = false;
-                break;
-            case NotesGenerate.NoteType.leftHold:
-                a = true;
-                break;
-            case NotesGenerate.NoteType.rightHold:
-                a = false;
-                break;
-            case NotesGenerate.NoteType.leftFlick:
-                a = true;
-                break;
-            case NotesGenerate.NoteType.rightFlick:
-                a = false;
-                break;
-            case NotesGenerate.NoteType.leftDrag:
-                a = true;
-                break;
-            case NotesGenerate.NoteType.rightDrag:
-                a = false;
-                break;
-            default:
-                a = true;
-                break;
-        }
-        return a;
     }
 }

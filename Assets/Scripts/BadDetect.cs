@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static NotesInfo;
 
 public class BadDetect : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class BadDetect : MonoBehaviour
     {
         if (collision.CompareTag("Note"))
         {
-            if (DetectLine.GetNoteDirection(collision.gameObject))
+            if (GetNoteDirection(collision.gameObject))
             {
                 badNotesLeft.Enqueue(collision.gameObject);
             }
@@ -31,35 +32,27 @@ public class BadDetect : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //note离开bad collider，实现miss
-        if (collision.gameObject.activeSelf)
+        if (collision.CompareTag("Note"))
         {
-            if (collision.CompareTag("Note"))
+            if (badNotesLeft.Peek() == collision.gameObject)
             {
-                if (DetectLine.GetNoteDirection(collision.gameObject))
-                {
-                    if (badNotesLeft.Peek() == collision.gameObject)
-                    {
-                        badNotesLeft.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是badLeft队列的首位");
-                    }
-                }
-                else
-                {
-                    if (badNotesRight.Peek() == collision.gameObject)
-                    {
-                        badNotesRight.Dequeue();
-                    }
-                    else
-                    {
-                        Debug.LogError(collision.gameObject + "不是badRight队列的首位");
-                    }
-                }
+                badNotesLeft.Dequeue();
             }
-            ScoreManager.Miss();
-            collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();
+            else if (badNotesRight.Peek() == collision.gameObject)
+            {
+                badNotesRight.Dequeue();
+            }
+            else
+            {
+                Debug.LogError(collision.gameObject + "不是bad队列的首位");
+            }
+
+            if (collision.gameObject.activeSelf)
+            {
+                ScoreManager.Miss();
+                collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();
+            }
+
         }
     }
 }

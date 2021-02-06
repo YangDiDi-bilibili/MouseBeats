@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static NotesInfo;
 
 public class GameObjectPool : MonoBehaviour
 {
@@ -120,41 +121,41 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetNote(NotesGenerate.NoteType note)
+    public GameObject GetNote(NoteType note)
     {
         GameObject tmp;
 
         switch (note)
         {
-            case NotesGenerate.NoteType.leftTap:
+            case NoteType.leftTap:
                 leftTapCount++;
                 tmp = leftTapPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.rightTap:
+            case NoteType.rightTap:
                 rightTapCount++;
                 tmp = rightTapPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.leftHold:
+            case NoteType.leftHold:
                 leftHoldCount++;
                 tmp = leftHoldPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.rightHold:
+            case NoteType.rightHold:
                 rightHoldCount++;
                 tmp = rightHoldPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.leftFlick:
+            case NoteType.leftFlick:
                 leftFlickCount++;
                 tmp = leftFlickPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.rightFlick:
+            case NoteType.rightFlick:
                 rightFlickCount++;
                 tmp = rightFlickPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.leftDrag:
+            case NoteType.leftDrag:
                 leftDragCount++;
                 tmp = leftDragPool.Dequeue();
                 break;
-            case NotesGenerate.NoteType.rightDrag:
+            case NoteType.rightDrag:
                 rightDragCount++;
                 tmp = rightDragPool.Dequeue();
                 break;
@@ -169,39 +170,39 @@ public class GameObjectPool : MonoBehaviour
         return tmp;
     }
 
-    public void ReturnNotes(GameObject tmp,NotesGenerate.NoteType type)
+    public void ReturnNotes(GameObject tmp,NoteType type)
     {
         switch (type)
         {
-            case NotesGenerate.NoteType.leftTap:
+            case NoteType.leftTap:
                 leftTapCount--;
                 leftTapPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.rightTap:
+            case NoteType.rightTap:
                 rightTapCount--;
                 rightTapPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.leftHold:
+            case NoteType.leftHold:
                 leftHoldCount--;
                 leftHoldPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.rightHold:
+            case NoteType.rightHold:
                 rightHoldCount--;
                 rightHoldPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.leftFlick:
+            case NoteType.leftFlick:
                 leftFlickCount--;
                 leftFlickPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.rightFlick:
+            case NoteType.rightFlick:
                 rightFlickCount--;
                 rightFlickPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.leftDrag:
+            case NoteType.leftDrag:
                 leftDragCount--;
                 leftDragPool.Enqueue(tmp);
                 break;
-            case NotesGenerate.NoteType.rightDrag:
+            case NoteType.rightDrag:
                 rightDragCount--;
                 rightDragPool.Enqueue(tmp);
                 break;
@@ -210,6 +211,28 @@ public class GameObjectPool : MonoBehaviour
                 leftTapPool.Enqueue(tmp);
                 Debug.LogError(this + "输入有误");
                 break;
+        }
+    }
+
+    public GameObject PerfectEffect(Vector3 trans)
+    {
+        var tmp = perfectPool.Dequeue();
+        tmp.SetActive(true);
+        tmp.transform.position = trans;
+        return tmp;
+    }
+
+    public void ReturnPerfect(GameObject tmp)
+    {
+        if (tmp.name == "Perfect")
+        {
+            tmp.SetActive(false);
+            tmp.transform.position = Vector3.zero;
+            perfectPool.Enqueue(tmp);
+        }
+        else
+        {
+            Debug.LogError("Return a false GameObject!");
         }
     }
 }
