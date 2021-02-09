@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2092990713318353480}
   - component: {fileID: 6744881005358534157}
   - component: {fileID: 1998466378261158336}
+  - component: {fileID: -537148301902254758}
   m_Layer: 0
   m_Name: LeftHold
   m_TagString: Note
@@ -131,3 +132,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &-537148301902254758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959820928975314322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ed5acfa91cc2b40bcfc83266ca0497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteType: 2
+  sprite: {fileID: 2092990713318353480}
+  boxCollider: {fileID: 1998466378261158336}
+  doEnabled: 1

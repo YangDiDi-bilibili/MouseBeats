@@ -53,12 +53,12 @@ public class PerfectDetect : MonoBehaviour
                 Debug.LogError(collision.gameObject + "不是perfect队列的首位");
             }
 
-            if (collision.gameObject.activeSelf)
+            if (collision.gameObject.GetComponent<NotesGenerate>().doEnabled)
             {
                 if (GetNoteType(collision.gameObject)==3)
                 {
                     ScoreManager.Miss();
-                    collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();
+                    collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject();
                 }
             }
 

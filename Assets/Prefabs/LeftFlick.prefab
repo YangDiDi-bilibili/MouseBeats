@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4472218557356301100}
   - component: {fileID: 111041000644584621}
   - component: {fileID: 3030960113971882819}
+  - component: {fileID: 6160044294968993310}
   m_Layer: 0
   m_Name: LeftFlick
   m_TagString: Note
@@ -131,3 +132,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &6160044294968993310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620425517685388646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ed5acfa91cc2b40bcfc83266ca0497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteType: 4
+  sprite: {fileID: 4472218557356301100}
+  boxCollider: {fileID: 3030960113971882819}
+  doEnabled: 1

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    public void OnDisable()
+    public bool doActive = true;
+
+    private void Update()
     {
-        GameObjectPool.instance.ReturnPerfectEffect(gameObject);
+        if (!doActive)
+        {
+            Destroy(gameObject);
+        }
     }
 }

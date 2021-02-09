@@ -5,24 +5,24 @@ using static NotesInfo;
 
 public class NotesGenerate : MonoBehaviour
 {
-    private GameObject note;
-
     public NoteType noteType;
+
+    public SpriteRenderer sprite;
+    public BoxCollider2D boxCollider;
+
+    public bool doEnabled = true;
+
+    public List<Sprite> sprites = new List<Sprite>();
 
     private void OnEnable()
     {
-        note = GameObjectPool.instance.GetNote(noteType);
-        note.transform.position = gameObject.transform.position;
-        note.transform.parent = gameObject.transform;
+        sprite.sprite = sprites[(int)noteType];
     }
 
-    public void ReturnGameObject()
+    public void ClearGameObject()
     {
-        note.SetActive(true);
-        note.transform.SetParent(null);
-        note.transform.position = Vector3.zero;
-        note.SetActive(false);
-
-        GameObjectPool.instance.ReturnNotes(note, noteType);
+        doEnabled = false;
+        sprite.enabled = false;
+        boxCollider.enabled = false;
     }
 }

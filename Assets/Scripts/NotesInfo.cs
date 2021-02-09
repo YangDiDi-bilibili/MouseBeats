@@ -18,7 +18,7 @@ public class NotesInfo : MonoBehaviour
 
     public static bool GetNoteDirection(GameObject gObj)
     {
-        var tmp = gObj.GetComponentInParent<NotesGenerate>().noteType;
+        var tmp = gObj.GetComponent<NotesGenerate>().noteType;
 
         bool a;
         switch (tmp)
@@ -56,7 +56,7 @@ public class NotesInfo : MonoBehaviour
 
     public static int GetNoteType(GameObject gObj)
     {
-        var tmp = gObj.GetComponentInParent<NotesGenerate>().noteType;
+        var tmp = gObj.GetComponent<NotesGenerate>().noteType;
         int a = (int)tmp / 2;
         return a;
     }

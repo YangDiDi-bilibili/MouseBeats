@@ -53,10 +53,10 @@ public class BadDetect : MonoBehaviour
                 Debug.LogError(collision.gameObject + "不是bad队列的首位");
             }
 
-            if (collision.gameObject.activeSelf)
+            if (collision.gameObject.GetComponent<NotesGenerate>().doEnabled)
             {
                 ScoreManager.Miss();
-                collision.gameObject.GetComponentInParent<NotesGenerate>().ReturnGameObject();
+                collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject();
             }
 
         }

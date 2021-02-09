@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static NotesInfo;
 public class DetectLine : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class DetectLine : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
 			doLeftDown = true;
             doLeft = true;
@@ -50,7 +51,7 @@ public class DetectLine : MonoBehaviour
                         {
                             if (PerfectDetect.perfectNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
                             {
-                                ScoreManager.Perfect(BadDetect.badNotesLeft.Peek().transform.position);
+                                ScoreManager.Perfect();
                                 ReturnNote(BadDetect.badNotesLeft.Peek());
                             }
                             else
@@ -93,7 +94,7 @@ public class DetectLine : MonoBehaviour
                         {
                             if (PerfectDetect.perfectNotesRight.Peek() == BadDetect.badNotesRight.Peek())
                             {
-                                ScoreManager.Perfect(BadDetect.badNotesRight.Peek().transform.position);
+                                ScoreManager.Perfect();
                                 ReturnNote(BadDetect.badNotesRight.Peek());
                             }
                             else
@@ -129,7 +130,7 @@ public class DetectLine : MonoBehaviour
             {
                 if(GetNoteType(PerfectDetect.perfectNotesLeft.Peek()) == 3)
                 {
-                    ScoreManager.Perfect(PerfectDetect.perfectNotesLeft.Peek().transform.position);
+                    ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesLeft.Peek());
                 }
             }
@@ -141,7 +142,7 @@ public class DetectLine : MonoBehaviour
             {
                 if (GetNoteType(PerfectDetect.perfectNotesRight.Peek()) == 3)
                 {
-                    ScoreManager.Perfect(PerfectDetect.perfectNotesRight.Peek().transform.position);
+                    ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesRight.Peek());
                 }
             }
@@ -150,6 +151,6 @@ public class DetectLine : MonoBehaviour
 
     private void ReturnNote(GameObject gObj)
     {
-        gObj.GetComponentInParent<NotesGenerate>().ReturnGameObject();
+        gObj.GetComponent<NotesGenerate>().ClearGameObject();
     }
 }

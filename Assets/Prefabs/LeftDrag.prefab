@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2518131168351117523}
   - component: {fileID: 2119171027503488850}
   - component: {fileID: 3959389525853229244}
+  - component: {fileID: 2502689488827927367}
   m_Layer: 0
   m_Name: LeftDrag
   m_TagString: Note
@@ -131,3 +132,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &2502689488827927367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116872095373463193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ed5acfa91cc2b40bcfc83266ca0497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteType: 6
+  sprite: {fileID: 2518131168351117523}
+  boxCollider: {fileID: 3959389525853229244}
+  doEnabled: 1
