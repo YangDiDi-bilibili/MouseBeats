@@ -4,11 +4,11 @@ using UnityEngine;
 using static NotesInfo;
 public class DetectLine : MonoBehaviour
 {
-    public static bool doLeft;
-    public static bool doRight;
+    public bool doLeft;
+    public bool doRight;
 
-	public static bool doLeftDown;
-	public static bool doRightDown;
+	public bool doLeftDown;
+	public bool doRightDown;
 
 	private void Update()
 	{
@@ -49,29 +49,35 @@ public class DetectLine : MonoBehaviour
                         if (PerfectDetect.perfectNotesLeft.Count != 0)
                         {
                             if (PerfectDetect.perfectNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
-                            {ScoreManager.Perfect(BadDetect.badNotesLeft.Peek().transform.position);
+                            {
+                                ScoreManager.Perfect(BadDetect.badNotesLeft.Peek().transform.position);
                                 ReturnNote(BadDetect.badNotesLeft.Peek());
                             }
                             else
-                            {ScoreManager.Good();
+                            {
+                                ScoreManager.Good();
                                 ReturnNote(BadDetect.badNotesLeft.Peek());
                             }
                         }
                         else
-                        {ScoreManager.Good();
+                        {
+                            ScoreManager.Good();
                             ReturnNote(BadDetect.badNotesLeft.Peek());
                         }
                     }
                     else
-                    {ScoreManager.Bad();
+                    {
+                        ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesLeft.Peek());
                     }
                 }
                 else
-                {ScoreManager.Bad();
+                {
+                    ScoreManager.Bad();
                     ReturnNote(BadDetect.badNotesLeft.Peek());
                 }
             }
+            doLeftDown = false;
         }
 
         if (doRightDown)
@@ -86,21 +92,25 @@ public class DetectLine : MonoBehaviour
                         if (PerfectDetect.perfectNotesRight.Count != 0)
                         {
                             if (PerfectDetect.perfectNotesRight.Peek() == BadDetect.badNotesRight.Peek())
-                            {ScoreManager.Perfect(BadDetect.badNotesRight.Peek().transform.position);
+                            {
+                                ScoreManager.Perfect(BadDetect.badNotesRight.Peek().transform.position);
                                 ReturnNote(BadDetect.badNotesRight.Peek());
                             }
                             else
-                            {ScoreManager.Good();
+                            {
+                                ScoreManager.Good();
                                 ReturnNote(BadDetect.badNotesRight.Peek());
                             }
                         }
                         else
-                        {ScoreManager.Good();
+                        {
+                            ScoreManager.Good();
                             ReturnNote(BadDetect.badNotesRight.Peek());
                         }
                     }
                     else
-                    {ScoreManager.Bad();
+                    {
+                        ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesRight.Peek());
                     }
                 }
@@ -110,6 +120,7 @@ public class DetectLine : MonoBehaviour
                     ReturnNote(BadDetect.badNotesRight.Peek());
                 }
             }
+            doRightDown = false;
         }
 
         if (doLeft)
@@ -135,9 +146,6 @@ public class DetectLine : MonoBehaviour
                 }
             }
         }
-
-        doLeftDown = false;
-		doRightDown = false;
     }
 
     private void ReturnNote(GameObject gObj)

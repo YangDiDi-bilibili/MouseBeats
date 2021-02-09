@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    private void OnEnable()
+    public void OnDisable()
     {
-        Invoke("Disable", 2.0f);
-    }
-
-    private void Disable()
-    {
-        gameObject.SetActive(false);
+        GameObjectPool.instance.ReturnPerfectEffect(gameObject);
     }
 }

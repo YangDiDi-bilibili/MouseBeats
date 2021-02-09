@@ -222,4 +222,10 @@ public class GameObjectPool : MonoBehaviour
         perfectPool.Enqueue(tmp);
         return tmp;
     }
+
+    public void ReturnPerfectEffect(GameObject gObj)
+    {
+        perfectPool.Enqueue(gObj);
+        gObj.SetActive(false);
+    }
 }

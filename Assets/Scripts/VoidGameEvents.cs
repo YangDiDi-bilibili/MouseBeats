@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName ="Create EventObject")]
+[CreateAssetMenu(menuName ="EventObjects/Void")]
 public class VoidGameEvents : ScriptableObject
 {
     private List<VoidEventListener> listeners = new List<VoidEventListener>();

@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-		//SetGameSpeed(timeScale);
-	}
+        SetGameSpeed(timeScale);
+    }
 
 	public void SetGameSpeed(float speed)
     {
