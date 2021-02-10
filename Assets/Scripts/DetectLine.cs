@@ -43,16 +43,24 @@ public class DetectLine : MonoBehaviour
             Debug.Log("Left Button Down");
             if (BadDetect.badNotesLeft.Count != 0)
             {
-                if (GoodDetect.goodNotesLeft.Count != 0)
+                if (GetNoteType(BadDetect.badNotesLeft.Peek()) == 0)
                 {
-                    if (GoodDetect.goodNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
+                    if (GoodDetect.goodNotesLeft.Count != 0)
                     {
-                        if (PerfectDetect.perfectNotesLeft.Count != 0)
+                        if (GoodDetect.goodNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
                         {
-                            if (PerfectDetect.perfectNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
+                            if (PerfectDetect.perfectNotesLeft.Count != 0)
                             {
-                                ScoreManager.Perfect();
-                                ReturnNote(BadDetect.badNotesLeft.Peek());
+                                if (PerfectDetect.perfectNotesLeft.Peek() == BadDetect.badNotesLeft.Peek())
+                                {
+                                    ScoreManager.Perfect();
+                                    ReturnNote(BadDetect.badNotesLeft.Peek());
+                                }
+                                else
+                                {
+                                    ScoreManager.Good();
+                                    ReturnNote(BadDetect.badNotesLeft.Peek());
+                                }
                             }
                             else
                             {
@@ -62,7 +70,7 @@ public class DetectLine : MonoBehaviour
                         }
                         else
                         {
-                            ScoreManager.Good();
+                            ScoreManager.Bad();
                             ReturnNote(BadDetect.badNotesLeft.Peek());
                         }
                     }
@@ -71,11 +79,6 @@ public class DetectLine : MonoBehaviour
                         ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesLeft.Peek());
                     }
-                }
-                else
-                {
-                    ScoreManager.Bad();
-                    ReturnNote(BadDetect.badNotesLeft.Peek());
                 }
             }
             doLeftDown = false;
@@ -86,16 +89,24 @@ public class DetectLine : MonoBehaviour
             Debug.Log("Right Button Down");
             if (BadDetect.badNotesRight.Count != 0)
             {
-                if (GoodDetect.goodNotesRight.Count != 0)
+                if (GetNoteType(BadDetect.badNotesRight.Peek()) == 0)
                 {
-                    if (GoodDetect.goodNotesRight.Peek() == BadDetect.badNotesRight.Peek())
+                    if (GoodDetect.goodNotesRight.Count != 0)
                     {
-                        if (PerfectDetect.perfectNotesRight.Count != 0)
+                        if (GoodDetect.goodNotesRight.Peek() == BadDetect.badNotesRight.Peek())
                         {
-                            if (PerfectDetect.perfectNotesRight.Peek() == BadDetect.badNotesRight.Peek())
+                            if (PerfectDetect.perfectNotesRight.Count != 0)
                             {
-                                ScoreManager.Perfect();
-                                ReturnNote(BadDetect.badNotesRight.Peek());
+                                if (PerfectDetect.perfectNotesRight.Peek() == BadDetect.badNotesRight.Peek())
+                                {
+                                    ScoreManager.Perfect();
+                                    ReturnNote(BadDetect.badNotesRight.Peek());
+                                }
+                                else
+                                {
+                                    ScoreManager.Good();
+                                    ReturnNote(BadDetect.badNotesRight.Peek());
+                                }
                             }
                             else
                             {
@@ -105,7 +116,7 @@ public class DetectLine : MonoBehaviour
                         }
                         else
                         {
-                            ScoreManager.Good();
+                            ScoreManager.Bad();
                             ReturnNote(BadDetect.badNotesRight.Peek());
                         }
                     }
@@ -114,11 +125,6 @@ public class DetectLine : MonoBehaviour
                         ScoreManager.Bad();
                         ReturnNote(BadDetect.badNotesRight.Peek());
                     }
-                }
-                else
-                {
-                    ScoreManager.Bad();
-                    ReturnNote(BadDetect.badNotesRight.Peek());
                 }
             }
             doRightDown = false;
@@ -133,6 +139,15 @@ public class DetectLine : MonoBehaviour
                     ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesLeft.Peek());
                 }
+                else if (GetNoteType(PerfectDetect.perfectNotesLeft.Peek()) == 2)
+                {
+                    var v2 = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+                    if (Vector2.Distance(v2, Vector2.zero) > 0.1)
+                    {
+                        ScoreManager.Perfect();
+                        ReturnNote(PerfectDetect.perfectNotesLeft.Peek());
+                    }
+                }
             }
         }
 
@@ -144,6 +159,15 @@ public class DetectLine : MonoBehaviour
                 {
                     ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesRight.Peek());
+                }
+                else if (GetNoteType(PerfectDetect.perfectNotesRight.Peek()) == 2)
+                {
+                    var v2 = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+                    if (Vector2.Distance(v2, Vector2.zero) > 0.1)
+                    {
+                        ScoreManager.Perfect();
+                        ReturnNote(PerfectDetect.perfectNotesRight.Peek());
+                    }
                 }
             }
         }
