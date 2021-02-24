@@ -5,6 +5,8 @@ using static NotesInfo;
 
 public class PerfectDetect : MonoBehaviour
 {
+    private int layer;
+
     public static Queue<GameObject> perfectNotesLeft = new Queue<GameObject>();
     public static Queue<GameObject> perfectNotesRight = new Queue<GameObject>();
 
@@ -16,7 +18,7 @@ public class PerfectDetect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.CompareTag("Note") && layer == collision.gameObject.GetComponent<NotesGenerate>().layer)
         {
             if (GetNoteDirection(collision.gameObject))
             {
@@ -31,7 +33,7 @@ public class PerfectDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.CompareTag("Note") && layer == collision.gameObject.GetComponent<NotesGenerate>().layer)
         {
             if (perfectNotesLeft.Count != 0)
             {

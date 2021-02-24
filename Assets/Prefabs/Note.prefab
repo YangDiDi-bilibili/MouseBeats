@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1686406091172921297}
   - component: {fileID: 7392389008972636663}
   m_Layer: 0
-  m_Name: Note_001
+  m_Name: Note
   m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -148,12 +148,5 @@ MonoBehaviour:
   sprite: {fileID: 245428969084587966}
   boxCollider: {fileID: 1686406091172921297}
   doEnabled: 1
-  sprites:
-  - {fileID: -3598916374439202735, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: 8039372748551541876, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: 6257677035871968672, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: -4033378587868176147, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: -733219096263470103, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: -2870236734101642953, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: 8722924714100469040, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
-  - {fileID: -8422380503605110267, guid: 47f066310da371242a7c6476efecdd1d, type: 3}
+  spritesLeft: {fileID: 11400000, guid: 0ddc42b918837c043978964707875cf3, type: 2}
+  spritesRight: {fileID: 11400000, guid: 48b57ad725d5a684aa093fd0ff61bfc1, type: 2}

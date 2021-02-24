@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static NotesInfo;
+
 public class DetectLine : MonoBehaviour
 {
+    public int layer = 0;
+
     public bool doLeft;
     public bool doRight;
 
@@ -134,7 +137,7 @@ public class DetectLine : MonoBehaviour
         {
             if (PerfectDetect.perfectNotesLeft.Count != 0)
             {
-                if(GetNoteType(PerfectDetect.perfectNotesLeft.Peek()) == 3)
+                if(GetNoteType(PerfectDetect.perfectNotesLeft.Peek()) == 1)
                 {
                     ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesLeft.Peek());
@@ -155,7 +158,7 @@ public class DetectLine : MonoBehaviour
         {
             if (PerfectDetect.perfectNotesRight.Count != 0)
             {
-                if (GetNoteType(PerfectDetect.perfectNotesRight.Peek()) == 3)
+                if (GetNoteType(PerfectDetect.perfectNotesRight.Peek()) == 1)
                 {
                     ScoreManager.Perfect();
                     ReturnNote(PerfectDetect.perfectNotesRight.Peek());

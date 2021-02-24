@@ -5,6 +5,8 @@ using static NotesInfo;
 
 public class GoodDetect : MonoBehaviour
 {
+    private int layer;
+
     public static Queue<GameObject> goodNotesLeft = new Queue<GameObject>();
     public static Queue<GameObject> goodNotesRight = new Queue<GameObject>();
 
@@ -12,11 +14,13 @@ public class GoodDetect : MonoBehaviour
     {
         goodNotesLeft.Clear();
         goodNotesRight.Clear();
+
+        layer = GetComponentInParent<DetectLine>().layer;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.CompareTag("Note") && layer == collision.gameObject.GetComponent<NotesGenerate>().layer)
         {
             if (GetNoteDirection(collision.gameObject))
             {
@@ -31,7 +35,7 @@ public class GoodDetect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Note"))
+        if (collision.CompareTag("Note") && layer == collision.gameObject.GetComponent<NotesGenerate>().layer)
         {
             if (goodNotesLeft.Count != 0)
             {
