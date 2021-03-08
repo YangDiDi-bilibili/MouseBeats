@@ -5,9 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource bgm;
 
-    public List<AudioClip> audioClips = new List<AudioClip>();
+    public List<AudioPrefab> audioPrefabs = new List<AudioPrefab>();
+    private Queue<AudioSource> audioSources = new Queue<AudioSource>();
 
     private void Awake()
     {
@@ -21,19 +21,38 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (bgm == null)
-        {
-            var tmpObj = new GameObject();
-            bgm = tmpObj.AddComponent<AudioSource>();
-        }
+        audioSources.Enqueue(gameObject.AddComponent<AudioSource>());
     }
 
     /// <summary>
-    /// 调节音频播放速度
+    /// 播放音频名字
     /// </summary>
-    /// <param name="speed"></param>
-    public void SetPlaySpeed(float speed)
+    /// <param name="soundName"></param>
+    public void PlaySound(string soundName)
     {
-        bgm.pitch = speed;
+        bool doFindClip = false;
+        foreach (var item in audioPrefabs)
+        {
+            if (item.audioName == soundName)
+            {
+                AudioSource tmpSource;
+                if (audioSources.Peek().isPlaying)
+                {
+                    tmpSource = gameObject.AddComponent<AudioSource>();
+                }
+                else
+                {
+                    tmpSource = audioSources.Dequeue();
+                }
+
+                tmpSource.PlayOneShot(item.audioClip);
+                audioSources.Enqueue(tmpSource);
+
+                doFindClip = true;
+                break;
+            }
+        }
+
+        if (!doFindClip) Debug.LogError("Can't find audio Named " + soundName);
     }
 }

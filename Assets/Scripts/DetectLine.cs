@@ -43,7 +43,7 @@ public class DetectLine : MonoBehaviour
     {
         if (doLeftDown)
         {
-            Debug.Log("Left Button Down");
+            DebugMessage("Left Button Down");
             if (BadDetect.badNotesLeft.Count != 0)
             {
                 if (GetNoteType(BadDetect.badNotesLeft.Peek()) == 0)
@@ -89,7 +89,7 @@ public class DetectLine : MonoBehaviour
 
         if (doRightDown)
         {
-            Debug.Log("Right Button Down");
+            DebugMessage("Right Button Down");
             if (BadDetect.badNotesRight.Count != 0)
             {
                 if (GetNoteType(BadDetect.badNotesRight.Peek()) == 0)
@@ -173,6 +173,14 @@ public class DetectLine : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void DebugMessage(string message)
+    {
+        if (GameManager.instance.setting.doDebugMouse)
+        {
+            Debug.Log(message);
         }
     }
 

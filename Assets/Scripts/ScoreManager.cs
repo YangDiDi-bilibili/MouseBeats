@@ -38,6 +38,7 @@ public class ScoreManager : MonoBehaviour
         combo++;
         SetMaxCombo();
         determined = Determined.perfect;
+        AudioManager.instance.PlaySound("Tap");
         Debug.Log("Perfect!");
     }
 
@@ -47,6 +48,7 @@ public class ScoreManager : MonoBehaviour
         combo++;
         SetMaxCombo();
         determined = Determined.good;
+        AudioManager.instance.PlaySound("Tap");
         Debug.Log("Good!");
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName ="EventObjects/Void")]
 public class VoidGameEvents : ScriptableObject
 {
-    private List<VoidEventListener> listeners = new List<VoidEventListener>();
+    public List<VoidEventListener> listeners = new List<VoidEventListener>();
 
     public void AddListener(VoidEventListener listener)
     {
