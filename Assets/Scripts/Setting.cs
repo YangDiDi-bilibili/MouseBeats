@@ -6,6 +6,8 @@ using UnityEngine;
 public class Setting : ScriptableObject
 {
     public bool doDebugMouse;
-    public float timeScale = 1.0f;
+    public bool doDebugDetermined;
+    [Range(1, 1)] public float timeScale = 1.0f;
 
+    [Range(0, 1)] public float effectVolume;
 }

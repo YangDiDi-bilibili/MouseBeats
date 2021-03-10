@@ -45,6 +45,7 @@ public class AudioManager : MonoBehaviour
                     tmpSource = audioSources.Dequeue();
                 }
 
+                tmpSource.volume = GameManager.instance.setting.effectVolume;
                 tmpSource.PlayOneShot(item.audioClip);
                 audioSources.Enqueue(tmpSource);
 

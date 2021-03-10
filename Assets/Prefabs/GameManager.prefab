@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4347500571212384657}
   - component: {fileID: 4347500571212384656}
-  - component: {fileID: 4917694658108331195}
-  - component: {fileID: 9021168631708363641}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -48,44 +46,3 @@ MonoBehaviour:
   setting: {fileID: 11400000, guid: 8f20ae332b4bdb04b95e789a60c84d6d, type: 2}
   director: {fileID: 0}
   doGameGoing: 0
---- !u!114 &4917694658108331195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4347500571212384654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694158baa1a6b334fb18095a3fda5a93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  events: {fileID: 11400000, guid: d1c6775bf2b70e74f984e5b6e4ef3512, type: 2}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4347500571212384656}
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
---- !u!114 &9021168631708363641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4347500571212384654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef02d93c5df81f438319e641b730a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  perfect: {fileID: 2800000, guid: d1327517e7ef8fb44965050674934f30, type: 3}
-  good: {fileID: 2800000, guid: c3994cc5be4699648b79e34a90e5a34a, type: 3}

@@ -33,14 +33,20 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+			RelaodGame();
+		}
     }
 
-    public void SwitchScene(int sceneIndex)
+	public void RelaodGame()
+    {
+		SwitchScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void SwitchScene(int sceneIndex)
 	{
-		ResetAllValue();
+		director.Stop();
 		SceneManager.LoadScene(sceneIndex);
+		ResetAllValue();
 	}
 
 	public void SetGameSpeed(float speed)
@@ -49,6 +55,11 @@ public class GameManager : MonoBehaviour
     }
 	public void StartGame()
 	{
+        if (director == null)
+        {
+			director = GameObject.FindGameObjectsWithTag("Director")[0].GetComponent<PlayableDirector>();
+		}
+
 		SetGameSpeed(setting.timeScale);
 		director.Play();
 		doGameGoing = true;
@@ -70,5 +81,7 @@ public class GameManager : MonoBehaviour
 
 	private void ResetAllValue()
 	{
+		doGameGoing = false;
+		SetGameSpeed(0);
 	}
 }

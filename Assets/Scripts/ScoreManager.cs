@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
         SetMaxCombo();
         determined = Determined.perfect;
         AudioManager.instance.PlaySound("Tap");
-        Debug.Log("Perfect!");
+        DebugMessage("Perfect!");
     }
 
     public static void Good()
@@ -49,7 +49,7 @@ public class ScoreManager : MonoBehaviour
         SetMaxCombo();
         determined = Determined.good;
         AudioManager.instance.PlaySound("Tap");
-        Debug.Log("Good!");
+        DebugMessage("Good!");
     }
 
     public static void Bad()
@@ -57,7 +57,7 @@ public class ScoreManager : MonoBehaviour
         badCount++;
         combo = 0;
         determined = Determined.bad;
-        Debug.Log("Bad!");
+        DebugMessage("Bad!");
     }
 
     public static void Miss()
@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
         missCount++;
         combo = 0;
         determined = Determined.miss;
-        Debug.Log("Miss!");
+        DebugMessage("Miss!");
     }
 
     private static void SetMaxCombo()
@@ -73,6 +73,14 @@ public class ScoreManager : MonoBehaviour
         if (combo > maxCombo)
         {
             maxCombo = combo;
+        }
+    }
+
+    private static void DebugMessage(string message)
+    {
+        if (GameManager.instance.setting.doDebugDetermined)
+        {
+            Debug.Log(message);
         }
     }
 }
