@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doDebugMouse: 0
   doDebugDetermined: 0
+  doDebugClear: 1
+  doDetermined: 1
   timeScale: 1
   effectVolume: 1

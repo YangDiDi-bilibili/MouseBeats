@@ -43,16 +43,12 @@ public class PerfectDetect : MonoBehaviour
                 }
 
             }
-            else if (perfectNotesRight.Count != 0)
+            if (perfectNotesRight.Count != 0)
             {
                 if (perfectNotesRight.Peek() == collision.gameObject)
                 {
                     perfectNotesRight.Dequeue();
                 }
-            }
-            else
-            {
-                Debug.LogError(collision.gameObject + "不是perfect队列的首位");
             }
 
             if (collision.gameObject.GetComponent<NotesGenerate>().doEnabled)

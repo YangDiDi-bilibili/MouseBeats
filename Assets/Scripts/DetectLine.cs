@@ -16,28 +16,31 @@ public class DetectLine : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-		{
-			doLeftDown = true;
-            doLeft = true;
-		}
-
-		if (Input.GetMouseButtonDown(1))
-		{
-			doRightDown = true;
-            doRight = true;
-		}
-
-        if (Input.GetMouseButtonUp(0))
+        if (GameManager.instance.setting.doDetermined)
         {
-            doLeft = false;
-        }
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                doLeftDown = true;
+                doLeft = true;
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            doRight = false;
+            if (Input.GetMouseButtonDown(1))
+            {
+                doRightDown = true;
+                doRight = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                doLeft = false;
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                doRight = false;
+            }
         }
-	}
+    }
 
     private void FixedUpdate()
     {

@@ -49,3 +49,6 @@ TagManager:
   - name: Note
     uniqueID: 2284875901
     locked: 0
+  - name: Canvas
+    uniqueID: 3140469579
+    locked: 0

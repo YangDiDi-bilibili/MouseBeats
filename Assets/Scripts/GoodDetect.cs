@@ -44,16 +44,12 @@ public class GoodDetect : MonoBehaviour
                     goodNotesLeft.Dequeue();
                 }
             }
-            else if (goodNotesRight.Count != 0)
+            if (goodNotesRight.Count != 0)
             {
                 if (goodNotesRight.Peek() == collision.gameObject)
                 {
                     goodNotesRight.Dequeue();
                 }
-            }
-            else
-            {
-                Debug.LogError(collision.gameObject + "不是good队列的首位");
             }
         }
     }

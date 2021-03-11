@@ -36,6 +36,11 @@ public class NotesGenerate : MonoBehaviour
 
     public void ClearGameObject()
     {
+        if (GameManager.instance.setting.doDebugClear)
+        {
+            Debug.Log(gameObject.transform.parent.gameObject + "被消除");
+        }
+
         doEnabled = false;
         sprite.enabled = false;
         boxCollider.enabled = false;

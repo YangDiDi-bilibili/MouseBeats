@@ -22,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     public static int combo;
     public static int maxCombo;
 
+    public static int notesCount;
+
     private void Start()
     {
         score = 0;
@@ -30,6 +32,15 @@ public class ScoreManager : MonoBehaviour
         badCount = 0;
         missCount = 0;
         combo = 0;
+        notesCount = 0;
+
+        foreach (var item in GameObject.FindGameObjectsWithTag("Note"))
+        {
+            notesCount++;
+            item.SetActive(false);
+        }
+
+        Debug.Log("总共有" + notesCount + "个notes");
     }
 
     public static void Perfect()
@@ -39,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         SetMaxCombo();
         determined = Determined.perfect;
         AudioManager.instance.PlaySound("Tap");
-        DebugMessage("Perfect!");
+        DebugDeterMined("Perfect!");
     }
 
     public static void Good()
@@ -49,7 +60,7 @@ public class ScoreManager : MonoBehaviour
         SetMaxCombo();
         determined = Determined.good;
         AudioManager.instance.PlaySound("Tap");
-        DebugMessage("Good!");
+        DebugDeterMined("Good!");
     }
 
     public static void Bad()
@@ -57,7 +68,7 @@ public class ScoreManager : MonoBehaviour
         badCount++;
         combo = 0;
         determined = Determined.bad;
-        DebugMessage("Bad!");
+        DebugDeterMined("Bad!");
     }
 
     public static void Miss()
@@ -65,7 +76,7 @@ public class ScoreManager : MonoBehaviour
         missCount++;
         combo = 0;
         determined = Determined.miss;
-        DebugMessage("Miss!");
+        DebugDeterMined("Miss!");
     }
 
     private static void SetMaxCombo()
@@ -76,7 +87,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private static void DebugMessage(string message)
+    private static void DebugDeterMined(string message)
     {
         if (GameManager.instance.setting.doDebugDetermined)
         {

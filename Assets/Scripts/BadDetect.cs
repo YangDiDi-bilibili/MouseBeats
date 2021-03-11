@@ -45,16 +45,12 @@ public class BadDetect : MonoBehaviour
                     badNotesLeft.Dequeue();
                 }
             }
-            else if (badNotesRight.Count != 0)
+            if (badNotesRight.Count != 0)
             {
                 if (badNotesRight.Peek() == collision.gameObject)
                 {
                     badNotesRight.Dequeue();
                 }
-            }
-            else
-            {
-                Debug.LogError(collision.gameObject + "不是bad队列的首位");
             }
 
             if (collision.gameObject.GetComponent<NotesGenerate>().doEnabled)
