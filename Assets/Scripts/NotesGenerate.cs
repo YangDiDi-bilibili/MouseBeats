@@ -34,15 +34,51 @@ public class NotesGenerate : MonoBehaviour
         sprite.sprite = sprites[(int)noteType];
     }
 
-    public void ClearGameObject()
+    /// <summary>
+    /// 0为perfect，1为good，以此类推
+    /// </summary>
+    /// <param name="clearDetermined"></param>
+    public void ClearGameObject(int clearDetermined)
     {
-        if (GameManager.instance.setting.doDebugClear)
+        if (GameManager.instance.setting.doDetermined)
         {
-            Debug.Log(gameObject.transform.parent.gameObject + "被消除");
-        }
+            if (GameManager.instance.setting.doDebugClear)
+            {
+                Debug.Log(gameObject.transform.parent.gameObject + "被消除");
+            }
 
-        doEnabled = false;
-        sprite.enabled = false;
-        boxCollider.enabled = false;
+            doEnabled = false;
+            sprite.enabled = false;
+            boxCollider.enabled = false;
+
+            if (clearDetermined == 0 || clearDetermined == 1)
+            {
+                switch (GetNoteType(gameObject))
+                {
+                    case 0:
+                        AudioManager.instance.PlaySound("Tap");
+                        break;
+                    case 1:
+                        AudioManager.instance.PlaySound("Drag");
+                        break;
+                    case 2:
+                        AudioManager.instance.PlaySound("Flick");
+                        break;
+                    case 3:
+                        //nothing to do...
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (clearDetermined == 2 || clearDetermined == 3)
+            {
+
+            }
+            else
+            {
+                Debug.LogError("无法处理的数字");
+            }
+        }
     }
 }

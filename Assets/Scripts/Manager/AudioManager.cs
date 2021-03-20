@@ -21,7 +21,9 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        audioSources.Enqueue(gameObject.AddComponent<AudioSource>());
+        var gObj = new GameObject();
+        audioSources.Enqueue(gObj.AddComponent<AudioSource>());
+        gObj.transform.parent = transform;
     }
 
     /// <summary>
@@ -38,7 +40,9 @@ public class AudioManager : MonoBehaviour
                 AudioSource tmpSource;
                 if (audioSources.Peek().isPlaying)
                 {
-                    tmpSource = gameObject.AddComponent<AudioSource>();
+                    var gObj = new GameObject();
+                    tmpSource = gObj.AddComponent<AudioSource>();
+                    gObj.transform.parent = transform;
                 }
                 else
                 {

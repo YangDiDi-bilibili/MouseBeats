@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TapSound
   m_EditorClassIdentifier: 
   audioName: Tap
-  audioClip: {fileID: 8300000, guid: 80dfec1047b74284081ca0ae57acd27c, type: 3}
+  audioClip: {fileID: 8300000, guid: 3ae0b4b7fa3b6754c9f05ecbcb26952d, type: 3}

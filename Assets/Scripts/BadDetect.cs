@@ -56,7 +56,7 @@ public class BadDetect : MonoBehaviour
             if (collision.gameObject.GetComponent<NotesGenerate>().doEnabled)
             {
                 ScoreManager.Miss();
-                collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject();
+                collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject(3);
             }
         }
     }

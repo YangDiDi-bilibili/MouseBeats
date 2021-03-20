@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
 	public bool doGameGoing;
 
+	public event Action OnResetValue;
+
 	private void Awake()
 	{
 		if (instance == null)
@@ -23,8 +26,11 @@ public class GameManager : MonoBehaviour
         {
 			Destroy(gameObject);
 		}
+
 		doGameGoing = false;
 		SetGameSpeed(0);
+
+		OnResetValue += GameManager_ResetValue;
 
 		director = GameObject.FindGameObjectsWithTag("Director")[0].GetComponent<PlayableDirector>();
 	}
@@ -44,15 +50,15 @@ public class GameManager : MonoBehaviour
 
 	public void SwitchScene(int sceneIndex)
 	{
-		director.Stop();
 		SceneManager.LoadScene(sceneIndex);
-		ResetAllValue();
+		OnResetValue?.Invoke();
 	}
 
 	public void SetGameSpeed(float speed)
     {
 		Time.timeScale = speed;
     }
+
 	public void StartGame()
 	{
         if (director == null)
@@ -65,7 +71,7 @@ public class GameManager : MonoBehaviour
 		doGameGoing = true;
 	}
 
-	public void PauseGame()
+    public void PauseGame()
     {
 		SetGameSpeed(0);
 		director.Pause();
@@ -79,7 +85,7 @@ public class GameManager : MonoBehaviour
 		doGameGoing = true;
 	}
 
-	private void ResetAllValue()
+	private void GameManager_ResetValue()
 	{
 		doGameGoing = false;
 		SetGameSpeed(0);

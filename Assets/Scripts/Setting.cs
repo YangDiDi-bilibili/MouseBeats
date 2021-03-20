@@ -9,6 +9,7 @@ public class Setting : ScriptableObject
     public bool doDebugMouse;
     public bool doDebugDetermined;
     public bool doDebugClear;
+    public bool doDebugCount;
     public bool doDetermined;
     [Range(1, 1)] public float timeScale = 1.0f;
 

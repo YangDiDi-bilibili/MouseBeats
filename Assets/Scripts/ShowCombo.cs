@@ -8,11 +8,13 @@ public class ShowCombo : MonoBehaviour
     public enum Type
     {
         Combo,
+        Determined,
         Perfect,
         Good,
         Bad,
         Miss,
-        Determined
+        maxCombo,
+        NotesCount
     }
 
     Text text;
@@ -30,20 +32,26 @@ public class ShowCombo : MonoBehaviour
             case Type.Combo:
                 text.text = "Combo: " + ScoreManager.combo.ToString();
                 break;
+            case Type.Determined:
+                text.text = ScoreManager.determined.ToString();
+                break;
             case Type.Perfect:
                 text.text = "Perfect: " + ScoreManager.perfectCount.ToString();
                 break;
             case Type.Good:
-                text.text = ScoreManager.goodCount.ToString();
+                text.text = "Good: " + ScoreManager.goodCount.ToString();
                 break;
             case Type.Bad:
-                text.text = ScoreManager.badCount.ToString();
+                text.text = "Bad: " + ScoreManager.badCount.ToString();
                 break;
             case Type.Miss:
-                text.text = ScoreManager.missCount.ToString();
+                text.text = "Miss: " + ScoreManager.missCount.ToString();
                 break;
-            case Type.Determined:
-                text.text = ScoreManager.determined.ToString();
+            case Type.maxCombo:
+                text.text = "MaxCombo: " + ScoreManager.maxCombo.ToString();
+                break;
+            case Type.NotesCount:
+                text.text = "NotesCount: " + ScoreManager.notesCount.ToString();
                 break;
             default:
                 break;

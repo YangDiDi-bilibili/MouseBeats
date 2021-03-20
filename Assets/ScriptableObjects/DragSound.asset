@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad31285399877dd4fbfd9f278ac8075a, type: 3}
-  m_Name: NoteSprites
+  m_Script: {fileID: 11500000, guid: 31e60831464566c46b1daff4bd78e8ab, type: 3}
+  m_Name: DragSound
   m_EditorClassIdentifier: 
-  sprites: []
+  audioName: Drag
+  audioClip: {fileID: 8300000, guid: d4e2853a4ef4baf438a5f46c3e9b9c2b, type: 3}

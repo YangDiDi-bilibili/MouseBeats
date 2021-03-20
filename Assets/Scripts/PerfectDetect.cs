@@ -56,7 +56,7 @@ public class PerfectDetect : MonoBehaviour
                 if (GetNoteType(collision.gameObject)==3)
                 {
                     ScoreManager.Miss();
-                    collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject();
+                    collision.gameObject.GetComponent<NotesGenerate>().ClearGameObject(3);
                 }
             }
 

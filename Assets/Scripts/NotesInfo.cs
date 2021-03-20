@@ -5,18 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="NoteInfo")]
 public class NotesInfo : ScriptableObject
 {
+    public string notesName;
     public Sprite[] sprites = new Sprite[4];
 
     public enum NoteType
     {
         leftTap,
         rightTap,
-        leftHold,
-        rightHold,
+        leftDrag,
+        rightDrag,
         leftFlick,
         rightFlick,
-        leftDrag,
-        rightDrag
+        leftHold,
+        rightHold
     }
 
     public static bool GetNoteDirection(GameObject gObj)

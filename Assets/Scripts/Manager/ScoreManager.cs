@@ -24,23 +24,38 @@ public class ScoreManager : MonoBehaviour
 
     public static int notesCount;
 
-    private void Start()
+    private void OnEnable()
+    {
+        GameManager.instance.OnResetValue += ScoreManager_ResetValue;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnResetValue -= ScoreManager_ResetValue;
+    }
+
+    private void ScoreManager_ResetValue()
     {
         score = 0;
         perfectCount = 0;
         goodCount = 0;
         badCount = 0;
         missCount = 0;
-        combo = 0;
         notesCount = 0;
+        combo = 0;
+    }
 
+    private void Start()
+    {
         foreach (var item in GameObject.FindGameObjectsWithTag("Note"))
         {
             notesCount++;
             item.SetActive(false);
         }
 
-        Debug.Log("总共有" + notesCount + "个notes");
+        if (GameManager.instance.setting.doDebugCount)
+            Debug.Log("总共有" + notesCount + "个notes");
+
     }
 
     public static void Perfect()
@@ -49,7 +64,6 @@ public class ScoreManager : MonoBehaviour
         combo++;
         SetMaxCombo();
         determined = Determined.perfect;
-        AudioManager.instance.PlaySound("Tap");
         DebugDeterMined("Perfect!");
     }
 
@@ -59,7 +73,6 @@ public class ScoreManager : MonoBehaviour
         combo++;
         SetMaxCombo();
         determined = Determined.good;
-        AudioManager.instance.PlaySound("Tap");
         DebugDeterMined("Good!");
     }
 
